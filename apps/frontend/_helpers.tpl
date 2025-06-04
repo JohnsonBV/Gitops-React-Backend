@@ -1,4 +1,8 @@
 {{- define "react-frontend.fullname" -}}
-{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
+{{ include "react-frontend.name" . }}-{{ .Release.Name }}
+{{- end -}}
+
+{{- define "react-frontend.name" -}}
+react-frontend
 {{- end -}}
 

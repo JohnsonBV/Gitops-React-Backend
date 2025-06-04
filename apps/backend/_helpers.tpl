@@ -1,4 +1,8 @@
 {{- define "java-backend.fullname" -}}
-{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
+{{ include "java-backend.name" . }}-{{ .Release.Name }}
+{{- end -}}
+
+{{- define "java-backend.name" -}}
+java-backend
 {{- end -}}
 
