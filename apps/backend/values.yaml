@@ -1,13 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: johnsonbv/java-backend
-  tag: latest
+  repository: hashicorp/http-echo
+  tag: 0.2.3
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 5678
 
 ingress:
   enabled: true

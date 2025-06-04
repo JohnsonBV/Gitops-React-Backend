@@ -19,5 +19,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8080
+            - containerPort: 5678
+          command: ["/http-echo"]
+          args: ["-text=Hello from backend"]
 
