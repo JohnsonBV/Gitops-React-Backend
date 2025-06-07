@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-metrics-svc
+  labels:
+    app: spring-backend
+spec:
+  selector:
+    app: spring-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: spring-monitor
+  labels:
+    release: prometheus  # Make sure this matches the Helm release name
+spec:
+  selector:
+    matchLabels:
+      app: spring-backend
+  namespaceSelector:
+    matchNames:
+      - default
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      interval: 15s
+
